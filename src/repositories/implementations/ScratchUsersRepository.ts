@@ -10,17 +10,26 @@ export class ScratchUsersRepository implements IUsersRepository
 
     async findByEmail(email: string): Promise<User>
     {
+        this.users = this.getUsersList();
         return this.users.find(usr => usr.email == email);
     }
 
     async save(user: User): Promise<void>
     {
-        console.log('usuario no save!', user)
-        let userListToSave = this.insertIntoUsersList(user);
+        const exists = await this.findByEmail(user.email);
+
+        if(exists)
+        {
+            throw new Error('User already exists.');
+        }
+        
+        let userListToSave = this.getUsersList();
+        userListToSave.push(user);
         this.localStorage.setItem(this.USERS_LIST_KEY, JSON.stringify(userListToSave));
+        
     }
 
-    insertIntoUsersList(user: User): User[]
+    getUsersList(): User[]
     {
         let usersList = [];
         let usersListStringfy = this.localStorage.getItem(this.USERS_LIST_KEY);
@@ -28,8 +37,6 @@ export class ScratchUsersRepository implements IUsersRepository
         if(usersListStringfy !== '' && usersListStringfy !== null)
             usersList = JSON.parse(usersListStringfy);
         else usersList = [];
-
-        usersList.push(user);
 
         return usersList;
     }  

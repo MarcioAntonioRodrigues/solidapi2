@@ -8,6 +8,7 @@
 		"forceConsistentCasingInFileNames": true
 	},
 	"include": [
-		"src/**/*.ts"
-, "Environments.ts"	]
+		"src/**/*.ts", 
+		"Environments.ts"
+, "src/test/test.spec.js"	]
 }
