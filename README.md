@@ -4,7 +4,7 @@ Aplicação baseada em um tutorial do canal Rocketseat. Link do vídeo: https://
 
 ### Comandos utilizados para a criação do projeto:
 
-- Para rodar a aplicação, rode o comando na pasta raiz do projeto:
+- Para rodar a aplicação, rode o comando abaixo na pasta raiz do projeto. A Aplicação roda na porta: 3334.
 
   `yarn start`
 
