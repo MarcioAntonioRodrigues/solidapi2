@@ -25,6 +25,7 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+    - run: sls deploy
     - name: servless deploy
       uses: serverless/github-action@v1
       with:
@@ -32,6 +33,5 @@ jobs:
       env:
         AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
         AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-    - name: deploy server
-    - run: sls deploy 
+
 
