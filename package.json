@@ -8,14 +8,15 @@
   },
   "scripts": {
     "start": "tsnd --transpile-only --respawn --ignore-watch node_modules src/server.ts",
-    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'src/test/**/*.ts'"
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'src/test/**/*.ts'",
+    "build": "ng build --prod",
+    "lint": "ng lint"
   },
   "dependencies": {
     "amqplib": "^0.8.0",
     "express": "^4.17.1",
     "node-localstorage": "^2.2.1",
     "nodemailer": "^6.6.2",
-    "serverless-http": "^2.7.0",
     "uuidv4": "^6.2.10"
   },
   "devDependencies": {

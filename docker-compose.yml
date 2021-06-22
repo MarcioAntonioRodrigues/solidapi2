@@ -1,0 +1,8 @@
+version: '2.1'
+
+services: 
+    solid-api2:
+        image: solid-api2
+        build: .
+        ports: 
+            - 3334:3334
