@@ -14,9 +14,6 @@ export class GetUsersUseCase
             usersList = JSON.parse(usersListStringfy);
         else usersList = [];
 
-        console.log('lista: ', usersList)
-
-
         return usersList;
     }
 }
