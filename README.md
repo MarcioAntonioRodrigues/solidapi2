@@ -1,6 +1,7 @@
 # Solid Api 2
 
 Aplicação baseada em um tutorial do canal Rocketseat. Link do vídeo: https://www.youtube.com/watch?v=vAV4Vy4jfkc
+Link do tutorial sobre a integração com o RabbitMQ: https://betterprogramming.pub/implementing-rabbitmq-with-node-js-93e15a44a9cc
 
 ### Comandos utilizados para a criação do projeto:
 
