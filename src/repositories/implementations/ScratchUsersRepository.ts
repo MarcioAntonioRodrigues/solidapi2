@@ -14,7 +14,7 @@ export class ScratchUsersRepository implements IUsersRepository
         return this.users.find(usr => usr.email == email);
     }
 
-    async save(user: User): Promise<void>
+    async save(user: any): Promise<void>
     {
         const exists = await this.findByEmail(user.email);
 
@@ -26,7 +26,6 @@ export class ScratchUsersRepository implements IUsersRepository
         let userListToSave = this.getUsersList();
         userListToSave.push(user);
         this.localStorage.setItem(this.USERS_LIST_KEY, JSON.stringify(userListToSave));
-        
     }
 
     getUsersList(): User[]

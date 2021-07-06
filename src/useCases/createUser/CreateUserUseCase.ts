@@ -1,19 +1,28 @@
 import { Environments } from "../../../Environments";
+import { IConsumerProvider } from "../../providers/IConsumerProvider";
 import { IMailProvider } from "../../providers/IMailProvider";
+import { IMessageBrokerProvider } from "../../providers/IMessageBrokerProvider";
 import { RabbitMQConsumerProvider } from "../../providers/implementations/RabbitMQConsumerProvider";
 export class CreateUserUseCase
 {
     private QUEUE_NAME = 'user creation';
 
     constructor(private mailProvider: IMailProvider,
-                private rabbitMQConsumerProvider: RabbitMQConsumerProvider) { }
+                private consumerProvider: IConsumerProvider, 
+                private messageBrokerProvider: IMessageBrokerProvider) { }
 
     async execute() {
         let env = new Environments();
         let conn = env.prd
 
-        this.rabbitMQConsumerProvider = new RabbitMQConsumerProvider(conn);
-        const user = await this.rabbitMQConsumerProvider.consumer(this.QUEUE_NAME);
+        this.consumerProvider = new RabbitMQConsumerProvider(conn);
+        const user = await this.consumerProvider.consumer(this.QUEUE_NAME);
+        // let userStringFy = JSON.stringify(user);
+
+        setTimeout(() => {
+            // this.messageBrokerProvider.publish(this.QUEUE_NAME, userStringFy)
+        }, 1000);
+
 
         await this.mailProvider.sendMail({
             to: {
